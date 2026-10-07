@@ -120,9 +120,6 @@ dateTime:
   timeFormat: h:mm a
   dateFormat: MM/dd/yyyy
 
-map:
-  initLat: 45.52
-  initLon: -122.682
   # autoFlyOnTripFormUpdate: false
   # navigationControlPosition: "bottom-right"
 
@@ -240,74 +237,26 @@ geocoder:
 
 # Use this mode config for the enhanced Transit+ config
 modes:
-  # allowFlexWithoutTransit: true # True by default
-  ### Optional number of itineraries to return by default - Defaults to 3.
-  # numItineraries: 3
-  # Definition for the mode buttons to display in trip form
   modeButtons:
     - iconName: bus
       key: transit
-      # List of modes to add to the query when this button is enabled
       modes:
         - mode: TRANSIT
+
     - iconName: bicycle
       key: bicycle
       modes:
-        # Modes can contain a qualifier
-        # See OTP documentation for details
         - mode: BICYCLE
-        - mode: BICYCLE
-          qualifier: RENT
-    - iconName: car
-      key: car
-      modes:
-        - mode: CAR
-  # Allows initial state to be configured.
-  # Which buttons enabled on load + overriding setting defaults
-  initialState:
-    enabledModeButtons: # Mode button keys enabled by default
-      - transit
-      - bike
-  # Add additional mode settings to show up in mode selector hover panel
-  modeSettingDefinitions:
-    # Corresponding mode; if this mode is found in the button's mode list,
-    # this setting will show up in the hover panel for that button.
-    - applicableMode: TRANSIT
-      default: false # Initial state value
-      # One of the predefined query parameter names.
-      # See OTP-UI ModeSelector component for a list of supported parameter names.
-      key: wheelchair
-      iconName: wheelchair
-      type: CHECKBOX # Possible options: CHECKBOX, SUBMODE, SLIDER, DROPDOWN
-  transitModes:
-      # Mode can be a string or an array of strings.
-    - mode: ["TROLLEYBUS", "BUS"]
-      # When mode is an array an overrideMode must be provided.
-      # This specifies the displayed mode used for icon and URL param.
-      overrideMode: BUS
-      label: Bus
-      # A mode color can be added, used throughout the application,
-      # most notably in the enhanced stop viewer bubble
-      color: blue
-    - mode: TRAM
-      # For each GTFS mode, you can customize the label displayed in the UI.
-      label: MAX & Streetcar
-    - mode: RAIL
-      label: WES
-    - mode: GONDOLA
-      label: Aerial Tram
-    ## Additional modes added here will be visible in the mode selector in the UI.
-    ## Modes that are not configured here will never be enabled in requests, so if
-    ## your network has subways or ferries be sure they are present here.
-    - mode: SUBWAY
-      label: Subway
-    - mode: FERRY
-      label: Ferry
 
-  # Potentially deprecated
-  accessModes:
-    - mode: BICYCLE
-      label: Transit + Bike
+  initialState:
+    enabledModeButtons:
+      - transit
+
+  transitModes:
+    - mode: BUS
+      label: Bus
+    - mode: TRAM
+      label: Tram
 
 # # The following modules require the datastoreUrl to be set.
 # # trinetReDirect is optional, however omitting it requires pre-configured sessions.
@@ -604,7 +553,15 @@ disableSingleItineraryDays: false
 ### A separate message can be set for each language or locale if necessary.
 ### Languages defined may be region-specific (e.g. en-US) or language-specific (e.g. es, kr)
 locale: fr
-
+# Configuration de la carte initiale
+# Configuration de la carte initiale
+map:
+  initLat: 35.6971
+  initLon: -0.6308
+  initZoom: 13 # Niveau de zoom initial (ex: 12-14 pour une vue ville)
+  maxZoom: 19
+  minZoom: 9
+  
 # Configuration des langues disponibles
 language:
   # Français (par défaut)
