@@ -15,9 +15,9 @@ api:
   # Then you can set the OPTIONAL property basePath. The default is "/otp"
   basePath: /otp
   port: 8080
-
+title: "وهران للنقل"
 ### This setting makes the UI display metric units.
-# units: metric
+units: metric
 
 # Determines if the header brand should be clickable or not. If set to true, 
 # clicking the header brand will go back to the main trip planner page and wipe out any
@@ -363,7 +363,7 @@ itinerary:
     ['WALK', 'TRANSIT', 'PERSONAL'],
     ['WALK', 'TRANSIT', 'CAR'],
     ['CAR'] 
-  ]
+                         ]
   # Show fares for each transit leg (false if omitted).
   # (Requires using LineItinerary.)
   showRouteFares: false
@@ -603,8 +603,22 @@ disableSingleItineraryDays: false
 ### You can also customize OTP error messages for itinerary searches based on OTP HTTP codes.
 ### A separate message can be set for each language or locale if necessary.
 ### Languages defined may be region-specific (e.g. en-US) or language-specific (e.g. es, kr)
+locale: fr
 
-# language:
+# Configuration des langues disponibles
+language:
+  # Français (par défaut)
+  fr:
+    name: "Français"
+  # Anglais
+  en:
+    name: "English"
+  # Arabe (avec alignement de droite à gauche)
+  ar:
+    name: "العربية"
+    rtl: true
+
+#language:
 #   allLanguages
 #     common:
 #       accessModes:
