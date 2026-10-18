@@ -1,7 +1,36 @@
+/* ========================================================================== */
+/* 1. Configuration des couleurs & Mode Sombre                                */
+/* ========================================================================== */
+:root {
+  --otp-bg-color: #f8fafc;
+  --otp-surface: #ffffff;
+  --otp-surface-2: #f1f5f9;
+  --otp-text-color: #0f172a;
+  --otp-text-muted: #64748b;
+  --otp-border-color: #e2e8f0;
+  --otp-accent: #3b82f6;
+  --otp-accent-soft: rgba(59, 130, 246, 0.15);
+}
+
+html.dark {
+  --otp-bg-color: #0b0f19;
+  --otp-surface: #111827;
+  --otp-surface-2: #1f2937;
+  --otp-text-color: #f8fafc;
+  --otp-text-muted: #94a3b8;
+  --otp-border-color: #334155;
+  --otp-accent: #60a5fa;
+  --otp-accent-soft: rgba(96, 165, 250, 0.2);
+}
+
+/* ========================================================================== */
+/* 2. Code original OTP (Ajusté pour la lisibilité)                          */
+/* ========================================================================== */
 .otp .navbar {
   border-radius: 0;
-  background-color: #444;
+  background-color: #111827 !important; /* Sombre fixe pour la navbar */
   margin: 0px;
+  border-bottom: 1px solid var(--otp-border-color);
 }
 
 .otp .navbar .container {
@@ -13,7 +42,7 @@
 }
 
 .otp .navbar-title {
-  color: #fff;
+  color: #ffffff !important;
   font-size: 24px;
 }
 
@@ -30,20 +59,58 @@
   padding: 0px 15px;
 }
 
-/* Necessary for defining the height in the main panel nested elements. */
 .main-row main {
   height: 100%;
 }
 
 .sidebar {
   height: 100%;
-  padding: 0;
-  box-shadow: 3px 0px 12px #00000052;
+  padding: 12px;
+  background-color: var(--otp-sidebar-bg, var(--otp-surface));
+  color: var(--otp-text-color);
+  box-shadow: 3px 0px 12px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  overflow-y: auto;
 }
 
 .map-container {
   height: 100%;
   margin: 0px;
   padding: 0px;
+  direction: ltr !important; /* Corrige le texte à l'envers sur la carte */
+}
+
+/* ========================================================================== */
+/* 3. Correctif strict des textes et boutons invisibles                       */
+/* ========================================================================== */
+
+/* Tous les boutons dans le panneau */
+.sidebar button,
+.sidebar .btn,
+#open-advanced-settings-button {
+  color: var(--otp-text-color) !important;
+  fill: var(--otp-text-color) !important;
+}
+
+/* Affichage garanti de toutes les icônes SVG dans les boutons */
+.sidebar button svg,
+.sidebar .btn svg,
+#open-advanced-settings-button svg {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  fill: currentColor !important;
+}
+
+/* Lisibilité des textes d'aide et disclaimers en bas du panneau */
+.sidebar p,
+.sidebar label,
+.sidebar span,
+.sidebar .small {
+  color: var(--otp-text-color);
+}
+
+html.dark .sidebar .text-muted,
+html.dark .sidebar small,
+html.dark .sidebar [class*="disclaimer"] {
+  color: #94a3b8 !important;
 }

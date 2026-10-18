@@ -1,14 +1,12 @@
+/* eslint-disable prettier/prettier */
 /**
  * To customize certain UI features, create a file like this one and specify it
  * during build/start to override this default version of the file:
  *    yarn start --env.JS_CONFIG=/path/to/config.js
- *
- * Caveats: This file cannot import the following:
- * - other files
- * - modules not installed in the node_modules of this project.
  */
 import { ClassicLegIcon, ClassicModeIcon } from '@opentripplanner/icons'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 import {
   BatchResultsScreen,
@@ -20,41 +18,94 @@ import {
 const ItineraryBody = MetroItinerary
 const LegIcon = ClassicLegIcon
 const ModeIcon = ClassicModeIcon
+
 /**
- * Renders additional information below itinerary details.
+ * Composant pour écouter la langue active et appliquer dynamiquement le sens RTL ou LTR
  */
+const LanguageWatcher = () => {
+  // Récupère la locale active dans le store Redux d'OTP
+  const currentLocale = useSelector((state) => state.otp?.config?.localization?.currentLocale || state.router?.location?.query?.locale || 'fr')
+
+  useEffect(() => {
+    const root = document.documentElement
+    if (currentLocale === 'ar') {
+      root.setAttribute('dir', 'rtl')
+      root.setAttribute('lang', 'ar')
+    } else {
+      root.setAttribute('dir', 'ltr')
+      root.setAttribute('lang', currentLocale)
+    }
+  }, [currentLocale])
+
+  return null
+}
+
+/**
+ * Composant de contrôle du thème géré en local (sans passer par le store Redux)
+ */
+const ThemeToggleControl = () => {
+  const [themeMode, setThemeMode] = useState(() => {
+    return localStorage.getItem('otp_theme') || 'light'
+  })
+
+  useEffect(() => {
+    const root = document.documentElement
+    if (themeMode === 'dark') {
+      root.classList.add('dark')
+      localStorage.setItem('otp_theme', 'dark')
+    } else {
+      root.classList.remove('dark')
+      localStorage.setItem('otp_theme', 'light')
+    }
+  }, [themeMode])
+
+  const toggleTheme = () => {
+    setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
+  }
+
+  return (
+    <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 1000 }}>
+      <button
+        onClick={toggleTheme}
+        style={{
+          backgroundColor: themeMode === 'dark' ? '#2d3748' : '#ffffff',
+          color: themeMode === 'dark' ? '#f7fafc' : '#2d3748',
+          border: '1px solid #cbd5e0',
+          borderRadius: '8px',
+          padding: '8px 12px',
+          cursor: 'pointer',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          fontWeight: 'bold',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px'
+        }}
+      >
+        {themeMode === 'light' ? '🌙' : '☀️'}
+      </button>
+    </div>
+  )
+}
+
 const ItineraryFooter = () => <div />
 
 /**
- * @param  {Object} otpConfig The contents of the yml config file as json.
- * @return  This function must return an object with the following attributes.
- * All attributes are React components(*), unless noted.
- * - defaultMobileTitle (JSX markup, optional) The title bar contents.
- * - ItineraryBody (required) The component for itinerary details.
- * - ItineraryFooter (optional) The component rendered below itinerary details.
- * - LegIcon (required) An existing, imported LegIcon component
- *    from @opentripplanner/icons, but it is possible to create a custom component if desired.)
- * - MainControls (optional) Floating component over the main UI, if any.
- * - MainPanel (required) The component that renders the main (side) panel.
- * - MapWindows (optional) Floating window component over the map, if any.
- * - MobileResultsScreen (required) The component that renders the mobile search results.
- * - MobileSearchScreen (required) The component that renders the mobile search form.
- * - ModeIcon (required) An existing, imported ModeIcon component
- *    from @opentripplanner/icons, but it is possible to create a custom component if desired.)
- * - TermsOfService (required if otpConfig.persistence.strategy === 'otp_middleware')
- *    A component that renders terms of service, if any.
- * - TermsOfStorage (required if otpConfig.persistence.strategy === 'otp_middleware')
- *    A component that renders terms of storage, if any.
- *
- *   (*) Attributes that are React components can be defined using components imported,
- *   declared in the same file, or declared inline as a functional component,
- *       e.g. () => <div>{content}</div>
+ * On combine LanguageWatcher et ThemeToggleControl dans MainControls 
+ * pour qu'ils soient tous les deux exécutés par l'application.
  */
+const MainControls = () => (
+  <>
+    <LanguageWatcher />
+    <ThemeToggleControl />
+  </>
+)
+
 export function configure(otpConfig) {
   return {
     ItineraryBody,
     ItineraryFooter,
     LegIcon,
+    MainControls,
     MainPanel: BatchRoutingPanel,
     MobileResultsScreen: BatchResultsScreen,
     MobileSearchScreen: BatchSearchScreen,

@@ -1,1 +1,528 @@
-{}
+_id: ar
+_name: مثال ترجمة OTP-react-redux إلى العربية
+actions:
+  callTaker:
+    callQuerySaveError: "حدث خطأ أثناء حفظ الاستعلامات للمكالمة
+      : {err}"
+    callSaveError: "تعذّر حفظ المكالمة: {err}"
+    checkSessionError: "حدث خطأ أثناء جلسة المصادقة: {err}"
+    couldNotFindCallError: >-
+      تعذّر العثور على المكالمة. أُلغيت محاولة حفظ الاستعلامات.
+    fetchCallsError: "حدث خطأ أثناء تحميل المكالمات: {err}"
+    queryFetchError: "حدث خطأ أثناء تحميل الاستعلامات: {err}"
+  location:
+    deniedAccessAlert: >
+      تم رفض الوصول إلى موقعك.
+
+      لاستخدام موقعك الحالي، يُرجى السماح لمتصفحك بالوصول إليه، ثم إعادة فتح هذه
+      الصفحة.
+    geolocationNotSupportedError: لا يدعم متصفحك تحديد الموقع الجغرافي.
+    unknownPositionError: حدث خطأ غير معروف أثناء تحديد موقعك.
+    userDeniedPermission: رفض المستخدم الإذن
+  map:
+    currentLocation: (الموقع الحالي)
+common:
+  closedStop: محطة مغلقة
+  coordinates: "{lat}; {lon}"
+  currentlySelected: " (محدد حاليًا)"
+  dateExpressions:
+    today: اليوم
+    tomorrow: غدًا
+    yesterday: أمس
+  daysOfWeek:
+    friday: الجمعة
+    monday: الاثنين
+    saturday: السبت
+    sunday: الأحد
+    thursday: الخميس
+    tuesday: الثلاثاء
+    wednesday: الأربعاء
+  daysOfWeekCompact:
+    friday: ج
+    monday: ن
+    saturday: س
+    sunday: ح
+    thursday: خ
+    tuesday: ث
+    wednesday: ر
+  daysOfWeekPlural:
+    friday: أيام الجمعة
+    monday: أيام الاثنين
+    saturday: أيام السبت
+    sunday: أيام الأحد
+    thursday: أيام الخميس
+    tuesday: أيام الثلاثاء
+    wednesday: أيام الأربعاء
+  forms:
+    back: رجوع
+    cancel: إلغاء
+    close: إغلاق
+    defaultValue: "{value} (افتراضي)"
+    edit: تعديل
+    error: خطأ!
+    finish: إنهاء
+    loading: جارٍ التحميل
+    next: التالي
+    "no": لا
+    print: طباعة
+    save: حفظ
+    startOver: البدء من جديد
+    submitting: جارٍ الإرسال…
+    "yes": نعم
+  itineraryDescriptions:
+    containsCanceledTrip: يتضمن رحلة ملغاة
+    fareUnknown: الأجرة غير معروفة
+    noDefaultFareTypeConfigured: تنطبق أجور متعددة
+    noItineraryToDisplay: لا توجد رحلة لعرضها.
+    relativeCo2: |
+      {co2} من CO₂ أقل أو أكثر مقارنةً بالسيارة
+    reservationRequired: الحجز مطلوب
+    timeStartEnd: "{start} – {end}"
+  linkOpensNewWindow: (يفتح نافذة جديدة)
+  modes:
+    bicycle_rent: بدراجة مستأجرة
+    bike: دراجة
+    bus: حافلة
+    cable_car: ترام معلّق بالكابل
+    car: سيارة
+    car_park: موقف سيارات مع خدمة النقل العام
+    drive: بالسيارة
+    ferry: عبّارة
+    flex: خدمة Flex
+    funicular: قطار جبلي مائل
+    gondola: تلفريك
+    micromobility: بسكوتر كهربائي
+    micromobility_rent: بسكوتر مستأجر
+    rail: قطار
+    rent: استئجار مركبات
+    subway: مترو الأنفاق
+    tram: ترام
+    transit: بوسائل النقل العام
+    walk: سيرًا على الأقدام
+  places:
+    custom: أماكن أخرى
+    dining: مطعم
+    home: المنزل
+    work: مكان العمل
+  routing:
+    routeAndNumber: الخط {routeId}
+  searchForms:
+    click: انقر
+    enterDestination: أدخل وجهتك أو {mapAction} على الخريطة…
+    enterStartLocation: أدخل نقطة انطلاقك أو {mapAction} على الخريطة…
+    tap: اضغط
+  time:
+    duration:
+      aFewSeconds: بضع ثوانٍ
+      nDays: "{days, plural, =1 {يوم واحد} other {# أيام}}"
+      nHours: "{hours, plural, =1 {ساعة واحدة} other {# ساعات}}"
+      nMinutes: "{minutes, plural, =1 {دقيقة واحدة} other {# دقائق}}"
+    durationAgo: منذ {duration}
+    tripDurationFormat: >-
+      {hours, plural, =0 {} other {# س }}{minutes} د { seconds, plural, =0 {}
+      other {# ث}}
+components:
+  AddPlaceButton:
+    addPlace: إضافة محطة وسيطة
+    needOriginDestination: >-
+      اختر نقطة الانطلاق والوجهة قبل إضافة المحطات الوسيطة
+    tooManyPlaces: تم بلوغ الحد الأقصى للمحطات الوسيطة
+  AdvancedOptions:
+    bannedRoutes: اختر الخطوط التي تريد تجنبها…
+    preferredRoutes: اختر الخطوط المفضلة
+  AfterSignInScreen:
+    mainTitle: جارٍ إعادة التوجيه...
+    message: >-
+      إذا لم تظهر الصفحة بعد بضع ثوانٍ، <redirectLink>فانقر هنا</redirectLink>.
+  AppMenu:
+    callHistory: سجل المكالمات
+    closeMenu: إغلاق القائمة
+    mailables: مواد جاهزة للإرسال بالبريد
+    networkConnectionLost: خطأ في الاتصال بالشبكة
+    networkConnectionRestored: تمت استعادة الاتصال بالشبكة
+    openMenu: فتح القائمة
+    skipNavigation: تخطي التنقل
+  BatchResultsScreen:
+    expandMap: تكبير الخريطة
+    showResults: عرض النتائج
+  BatchRoutingPanel:
+    shortTitle: تخطيط رحلة
+  BatchSearchScreen:
+    advancedHeader: التفضيلات المتقدمة
+    header: رحلتك
+    logInToSetDefault: سجّل الدخول لتعيين هذه الخيارات كافتراضية
+    modeSelectorLabel: اختر وسيلة تنقلك
+    moreOptions: مزيد من الخيارات
+    saveAndReturn: حفظ وإغلاق
+    saved: تم الحفظ
+    setAsDefault: تعيين هذه الخيارات كافتراضية
+    submodeSelectorLabel: اختر وسائل التنقل والوسائل الفرعية
+    tripOptions: خيارات الرحلة
+  BatchSettings:
+    destination: الوجهة
+    invalidModeSelection: >-
+      تعذّر تخطيط رحلة باستخدام وسائل التنقل المحددة. أعد المحاولة مع إضافة
+      وسائل النقل العام.
+    origin: نقطة الانطلاق
+    planTripTooltip: تخطيط الرحلة
+    validationMessage: >-
+      يُرجى تعبئة الحقول التالية لتخطيط رحلتك:
+      {issues}
+  BeforeSignInScreen:
+    mainTitle: جارٍ تسجيل الدخول
+    message: >
+      يجب تسجيل الدخول للوصول إلى هذه الصفحة. يُرجى الانتظار بينما نعيد توجيهك
+      إلى صفحة تسجيل الدخول...
+  CallTakerPanel:
+    advancedOptions: خيارات متقدمة
+    intermediateDestination: أدخل الوجهة الوسيطة
+  DateTimeOptions:
+    arriveBy: الوصول بحلول
+    departAt: المغادرة في
+    now: الآن
+  DateTimePreview:
+    arriveAt: الوصول {arriveTime, time, short}
+    dayLastWeek: "{formattedDayOfWeek} الماضي"
+    departAt: المغادرة {departTime, time, short}
+    editDepartOrArrival: تعديل وقت المغادرة أو الوصول
+    leaveNow: الآن
+  DateTimeScreen:
+    header: يوم الرحلة ووقتها
+  DefaultItinerary:
+    clickDetails: انقر لعرض التفاصيل
+    multiModeSummary: "{accessMode} + {transitMode}"
+    nonTransit: بدائل
+  ErrorMessage:
+    header: تعذّر تخطيط الرحلة
+    warning: تحذير
+  FormNavigationButtons:
+    ariaLabel: التنقل في النموذج
+  ItinerarySummary:
+    itineraryDetails: تفاصيل الرحلة
+  LocationSearch:
+    enterLocation: أدخل الموقع
+    setDestination: الوجهة
+    setOrigin: نقطة الانطلاق
+  MapLayers:
+    bike-rental: دراجات مشتركة {companies}
+    car-rental: سيارات مستأجرة
+    micromobility-rental: دراجات سكوتر {companies}
+    park-and-ride: مواقف سيارات مع خدمة النقل العام
+    satellite: القمر الصناعي
+    shared-vehicles: مركبات مشتركة
+    stations: المحطات والمواقف
+    stops: المحطات والمواقف
+    streets: خريطة الشوارع
+  MapillaryFrame:
+    title: عرض بانورامي
+  MetroUI:
+    arriveAt: تصل في
+    fare: "{fare}"
+    itineraryDescription: رحلة في {time} عبر الخطوط {routes}
+    itinerarySummary: انطلق من {stopName} | {cost}
+    leaveAt: انطلق في
+    multipleOptions: خيارات متعددة
+    orAlternatives: أو خطوط أخرى في الاتجاه نفسه
+    originallyScheduledTime: (كان الموعد الأصلي {originalTime})
+    singleModeItineraryDescription: رحلة في {time} بواسطة {mode}
+    timeWalking: "{time} سيرًا على الأقدام"
+  NarrativeItinerariesHeader:
+    changeSortDir: تغيير ترتيب الفرز
+    howToFindResults: لعرض النتائج، استخدم عنوان «الرحلات التي عُثر عليها» أدناه.
+    itinerariesFound: "{itineraryNum, plural, one {تم العثور على رحلة واحدة} other {تم العثور على # رحلات} }"
+    resultsSortedBy: >-
+      رُتبت النتائج حسب {sortSelected}. لتغيير الترتيب، استخدم زر «فرز النتائج»
+      أدناه.
+    searching: جارٍ البحث...
+    selectArrivalTime: وقت الوصول
+    selectBest: الخيار الأفضل
+    selectCost: السعر
+    selectDepartureTime: وقت المغادرة
+    selectDuration: المدة
+    selectEmissions: انبعاثات CO₂
+    selectFare: أجرة الرحلة
+    selectWalkTime: مدة المشي
+    sortResults: فرز النتائج
+    viewAll: جميع الخيارات
+  NavLoginButton:
+    help: المساعدة
+    myAccount: حسابي
+    signIn: تسجيل الدخول
+    signOut: تسجيل الخروج
+  NearbyView:
+    bikeRentalStation: محطة تأجير دراجات
+    bikesAvailable: >-
+      {bikesAvailable, plural, one {دراجة واحدة متاحة} other {# دراجات متاحة}}
+    companyBicycle: دراجة {company}
+    companyScooter: سكوتر {company}
+    distanceAway: على بُعد {localizedDistanceString}
+    error: حدث خطأ أثناء تحميل الخدمات القريبة.
+    errorHeader: خطأ
+    filterNearby: تصفية الأماكن القريبة
+    header: بالقرب منك
+    headsign: "{destination}"
+    nearbyListIntro: قائمة تضم {count} من الأماكن القريبة.
+    nothingNearby: لا توجد أماكن قريبة.
+    nothingNearbyHeader: خارج النطاق
+    searchNearby: البحث عن أماكن قريبة...
+    spacesAvailable: "{spacesAvailable} أماكن شاغرة متاحة"
+  NotFound:
+    description: المحتوى الذي طلبته غير متاح.
+    header: المحتوى غير موجود
+  OTP2ErrorRenderer:
+    LOCATION_NOT_FOUND:
+      body: >-
+        {inputFieldsCount, plural, =0 {} one {نقطة {inputFields} بعيدة جدًا}
+        other {نقاط {inputFields} بعيدة جدًا}} عن شبكة الطرق.
+      header: الموقع غير قابل للوصول
+    NO_STOPS_IN_RANGE:
+      body: >-
+        {inputFieldsCount, plural, =0 {} one {نقطة {inputFields} بعيدة جدًا}
+        other {نقاط {inputFields} بعيدة جدًا}} عن وسائل النقل.
+      header: لا توجد محطات قريبة
+    NO_TRANSIT_CONNECTION:
+      body: >-
+        لم يُعثر على خدمة نقل عام بين نقطتي الانطلاق والوصول في التاريخ المحدد.
+      header: لا توجد خدمة نقل
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: >-
+        عُثر على خدمة نقل عام، لكنها لا تتوافق مع معاييرك. يُرجى تعديل البحث.
+      header: لا توجد خدمة نقل وفقًا لمعاييرك
+    OTP_RR_TRIP_IN_PAST:
+      body: لقد مضى وقت الوصول لرحلة واحدة أو أكثر.
+      header: انتهت الرحلة بالفعل
+    OUTSIDE_BOUNDS:
+      body: >-
+        {inputFieldsCount, plural, =0 {} one {نقطة {inputFields} ليست} other
+        {نقاط {inputFields} ليست}} ضمن منطقة البحث.
+      header: الموقع خارج منطقة البحث
+    OUTSIDE_SERVICE_PERIOD:
+      body: >-
+        يقع التاريخ المحدد خارج نطاق البيانات المتاحة للبحث عن الرحلات.
+      header: لا تتوفر بيانات لهذا التاريخ
+    SYSTEM_ERROR:
+      body: حدث خطأ غير معروف أثناء البحث.
+      header: تعذّر إجراء البحث
+    WALKING_BETTER_THAN_TRANSIT:
+      body: >-
+        يمكنك إكمال هذه الرحلة بسرعة أكبر دون استخدام وسائل النقل.
+      header: استخدام وسائل النقل أبطأ
+    NO_DIRECT_MODE_CONNECTION:
+      body: >-
+        قد تكون المسافة بين نقطة الانطلاق والوجهة كبيرة جدًا، أو قد لا يربط
+        بينهما مسار مباشر بوسيلة النقل المطلوبة.
+      header: لم يُعثر على رحلة مباشرة.
+    inputFields:
+      FROM: نقطة الانطلاق
+      TO: الوجهة
+  PlaceShortcut:
+    enterAlert: >
+      أدخل نقطة الانطلاق/الوجهة في النموذج (أو انقر على الخريطة)، ثم انقر على
+      العلامة التي تظهر لتحديد {placeType}.
+    setAddressForPlaceType: أدخل عنوان {placeType}
+  PlanFirstLastButtons:
+    first: الأول
+    last: الأخير
+    next: التالي
+    previous: السابق
+  PlanTripButton:
+    planTrip: تخطيط الرحلة
+  PointPopup:
+    zoomToLocation: تكبير هذا المكان
+  PrintLayout:
+    itinerary: رحلتك
+    toggleMap: إظهار/إخفاء الخريطة
+  RealtimeAnnotation:
+    delaysShownInResults: >
+      تم تحديث الرحلات التي بحثت عنها وفقًا لحالة الخدمة في الوقت الفعلي. عادةً،
+      تستغرق هذه الرحلة {normalDuration} باستخدام الخطوط: {routes}.
+    serviceUpdate: تحديث الخدمة
+  RealtimeStatusLabel:
+    early: مبكرًا بمقدار {minutes}
+    late: متأخرًا {minutes}
+    onTime: في الموعد
+    scheduled: وفق الجدول
+  ResultsError:
+    backToSearch: العودة إلى البحث
+  RouteDetails:
+    headsignFrom: "{headsign} (من {firstStop})"
+    headsignTo: "{headsign} ({lastStop})"
+    moreDetails: مزيد من التفاصيل
+    operatedBy: تشغّله {agencyName}
+    selectADirection: اختر اتجاهًا...
+    stopsTo: الاتجاه
+  RouteViewer:
+    agencyFilter: تصفية مشغّلي النقل
+    allAgencies: جميع المشغّلين
+    allModes: جميع وسائل النقل
+    details: " "
+    findARoute: البحث عن خط
+    header: دليل الخطوط
+    modeFilter: تصفية وسائل النقل
+    noFilteredRoutesFound: لا توجد خطوط تطابق معاييرك
+    noRouteFilter: لم تُطبّق أي عوامل تصفية على قائمة الخطوط.
+    openPatternViewer: عرض المسارات
+    routesFilteredBy: "طُبّقت عوامل التصفية التالية على قائمة الخطوط:
+      {list}."
+    shortTitle: دليل الخطوط
+    stopsInDirectionOfTravel: "المحطات في اتجاه السفر:"
+    title: دليل الخطوط
+  SaveTripButton:
+    cantSaveText: تعذّر الحفظ
+    cantSaveTooltip: >-
+      لا يمكن تتبّع سوى رحلات النقل العام التي لا تتضمن استئجار مركبات أو ركوب
+      سيارة.
+    saveTripText: حفظ
+    signInText: سجّل الدخول للحفظ
+    signInTooltip: يُرجى تسجيل الدخول لحفظ هذه الرحلة.
+  SessionTimeout:
+    body: >-
+      ستنتهي جلستك خلال دقيقة واحدة. اضغط على «تمديد جلستي» للاحتفاظ ببحثك.
+    header: ستنتهي جلستك
+    keepSession: تمديد جلستي
+  SimpleRealtimeAnnotation:
+    usingRealtimeInfo: >-
+      تستخدم هذه الرحلة معلومات حركة المرور والتأخيرات في الوقت الفعلي
+  StatusBadge:
+    invalid: غير صالح
+    pending: لم يتم التحقق منه
+    verified: تم التحقق منه
+  StopScheduleTable:
+    block: مجموعة المركبات
+    departure: المغادرة
+    destination: الاتجاه
+    route: الخط
+  StopTimeCell:
+    imminentArrival: وشيك
+    realtime: بيانات آنية
+    scheduled: وفق الجدول
+  StopViewer:
+    displayStopId: <strong>رقم المحطة</strong>{stopId}
+    findSchedule: البحث عن الجداول حسب التاريخ
+    flexStop: >-
+      تقع هذه المحطة ضمن منطقة «Flex» وتخدمها خدمة عند الطلب. قد يلزم الحجز
+      مسبقًا للحصول على الخدمة.
+    forStop: للمحطة {stopName}
+    header: معلومات المحطة
+    loadingText: جارٍ تحميل المحطة...
+    noStopsFound: لا توجد جداول زمنية للتاريخ المحدد.
+    operatorLogoAriaLabel: "محطة {operatorName}:"
+    schedule: الجداول الزمنية
+    timezoneWarning: تُعرض الجداول الزمنية وفق المنطقة الزمنية {timezoneCode}.
+    titleBarStopId: المحطة {stopId}
+    viewNearby: بالقرب منك
+    viewSchedule: الجداول الزمنية
+    zoomToStop: تكبير المحطة
+  SubNav:
+    languageSelector: محدد اللغة
+    languages: اللغات
+    myAccount: حسابي
+    selectALanguage: اختر لغة
+    settings: التفضيلات
+    trips: الرحلات
+    userMenu: خيارات الملف الشخصي
+  SwitchButton:
+    defaultContent: تبديل
+    switchLocations: تبديل المواقع
+  Timetable:
+    errorLoadingStopClosures: حدث خطأ أثناء تحميل إغلاقات المحطات
+    errorLoadingTimetable: حدث خطأ أثناء تحميل الجدول الزمني
+    routeInformation: معلومات الخط
+    showAllStops: عرض جميع المحطات
+    showTimepointsOnly: عرض نقاط التوقيت فقط
+    switchDirection: تبديل الاتجاه
+    timetable: الجدول الزمني
+    timetableDate: اختر تاريخًا
+  TransitVehicleOverlay:
+    in_transit_to: "المحطة التالية: {stop}"
+    incoming_at: يقترب من {stop}
+    stopped_at: متوقف في {stop}
+    travelingAt: "السرعة: {milesPerHour}"
+    vehicleName: المركبة {vehicleNumber}
+  TripPreviewLayout:
+    previewTrip: معاينة الرحلة
+  TripSummary:
+    arriveAt: "الوصول إلى "
+    leaveAt: "انطلق في "
+  TripTools:
+    copyLink: نسخ الرابط
+    header: الأدوات
+    linkCopied: تم النسخ
+    reportEmailSubject: الإبلاغ عن مشكلة في OpenTripPlanner
+    reportEmailTemplate: >
+      *** إرشادات للمستخدم ***
+
+      سيُرسل هذا البريد الإلكتروني بلاغًا عن مشكلتك إلى مشرفي هذا الموقع.
+
+      يُرجى تعبئة التفاصيل أدناه، ثم إرسالها من برنامج البريد الإلكتروني الذي
+      تستخدمه عادةً.
+
+
+      *** يُرجى التعبئة أدناه ***
+
+
+      المشكلة التي واجهتها:
+
+
+      نوع الرحلة التي بحثت عنها (مثل: سيرًا على الأقدام + وسائل النقل، دراجة +
+      وسائل النقل، سيارة + وسائل النقل):
+
+
+      *** التفاصيل الفنية ***
+    reportIssue: هل تواجه مشكلة؟
+    copyItineraryText: نسخ نص الرحلة
+  TripViewer:
+    accessible: يمكن الوصول إليه
+    bicyclesAllowed: مسموح بها
+    endOfTrip: نهاية الرحلة
+    header: معلومات الرحلة
+    listOfRouteStops: قائمة المحطات على هذا الخط
+    startOfTrip: بداية الرحلة
+    tripDescription: استقل من {boardAtStop} وانزل في {disembarkAtStop}
+  UserSettings:
+    confirmDeletion: >-
+      ستُحذف عمليات البحث و/أو الأماكن التي حفظتها مؤخرًا. هل تريد المتابعة؟
+    favoriteStops: المحطات المفضلة
+    myPreferences: تفضيلاتي
+    mySavedPlaces: أماكني المفضلة (<manageLink>إدارة</manageLink>)
+    noFavoriteStops: لا توجد محطات مفضلة
+    recentPlaces: الأماكن الأخيرة
+    recentSearchSummary: "{mode} من {from} إلى {to}"
+    recentSearches: عمليات البحث الأخيرة
+    rememberSearches: حفظ عمليات البحث/الأماكن الأخيرة؟
+    stopId: رقم المحطة {stopId}
+    storageDisclaimer: >
+      عند تفعيل هذا الخيار، ستُحفظ جميع أماكنك وتفضيلاتك وإعداداتك في ذاكرة التخزين
+      المؤقت لمتصفحك. لن تتمكن TriMet من الوصول إلى البيانات المتعلقة بمنزلك أو
+      مكان عملك أو أي مكان آخر. يمكنك في أي وقت إيقاف جمع عمليات البحث/الأماكن
+      الأخيرة وحذف منزلك ومكان عملك ومحطاتك المفضلة.
+  ViewSwitcher:
+    nearby: بالقرب منك
+    switcher: مبدّل طرق العرض
+  WelcomeScreen:
+    prompt: إلى أين تريد الذهاب؟
+config:
+  accessModes:
+    car_hail: رحلة بالسيارة
+  flex:
+    both: مزيد من التفاصيل أسفل مسار الرحلة
+    call-ahead: اتصل للحجز
+    continuous-dropoff: اطلب من السائق التوقف
+    flex-service: خدمة Flex
+    flex-service-colon: "خدمة Flex:"
+util:
+  state:
+    errorPlanningTrip: حدث خطأ أثناء تخطيط الرحلة.
+    networkUnavailable: نظام {network} غير متاح حاليًا.
+    noTripFound: لم يُعثر على أي رحلة.
+    noTripFoundForMode: لم يُعثر على رحلة باستخدام {modes}.
+    noTripFoundReason: >-
+      قد لا تكون هناك خدمة بين نقطتي الانطلاق والوصول ضمن النطاق المحدد أو في
+      الأوقات المحددة، أو قد لا يكون الوصول إليهما آمنًا.
+    noTripFoundWithReason: "{noTripFound} {reason}"
+# À ajouter dans i18n/ar.yml
+otpUi:
+  DateTimeSelector:
+    now: "الآن"
+    depart: "الإنطلاق على"
+    arrive: "الوصول على"

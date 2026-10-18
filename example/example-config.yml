@@ -241,12 +241,9 @@ modes:
     - iconName: bus
       key: transit
       modes:
-        - mode: TRANSIT
-
-    - iconName: bicycle
-      key: bicycle
-      modes:
-        - mode: BICYCLE
+        - mode: BUS
+        - mode: TRAM
+     
 
   initialState:
     enabledModeButtons:
@@ -574,7 +571,16 @@ language:
   ar:
     name: "العربية"
     rtl: true
-
+    components:
+      BatchRoutingPanel:
+      shortTitle: "حجز الرحلات"
+    RouteViewer:
+      shortTitle: "خطوط النقل"
+    ViewSwitchers:
+      nearby: "المحطات القريبة"
+    searchForms:
+      enterStartLocation: "أدخل نقطة الانطلاق"
+      enterDestination: "أدخل الوجهة"
 #language:
 #   allLanguages
 #     common:
